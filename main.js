@@ -1,3 +1,10 @@
+// Button functionality 
+
+const newBtn = document.getElementById('newBtn');
+const readBtn = document.getElementById('readBtn');
+
+// Library objects and functions
+
 let myLibrary = [];
 
 class Book {
@@ -17,3 +24,14 @@ class Book {
 function addBookToLibrary() {
 
 }
+
+newBtn.addEventListener('click', () => {
+    if (document.getElementById('popupForm').style.display == 'none') {
+    document.getElementById('popupForm').style.display = 'flex';
+    console.log('goooood');
+    } else {
+        document.getElementById('popupForm').style.display = 'none';
+        console.log('baaaad');
+        console.log(document.getElementById('popupForm').style.display)
+    }
+});
