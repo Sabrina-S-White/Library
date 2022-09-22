@@ -1,3 +1,6 @@
+// Variables
+let x = 0;
+
 // Button functionality 
 
 const newBtn = document.getElementById('newBtn');
@@ -25,13 +28,33 @@ function addBookToLibrary() {
 
 }
 
-newBtn.addEventListener('click', () => {
-    if (document.getElementById('popupForm').style.display == 'none') {
+// New Book Popup
+
+function displayPopup() {
     document.getElementById('popupForm').style.display = 'flex';
-    console.log('goooood');
-    } else {
-        document.getElementById('popupForm').style.display = 'none';
-        console.log('baaaad');
-        console.log(document.getElementById('popupForm').style.display)
+};
+
+function removePopup() {
+    document.getElementById('popupForm').style.display = 'none';
+};
+
+function pageMask() {
+    document.getElementById('pageMask').style.position = 'fixed';
+};
+
+function removePageMask() {
+    document.getElementById('pageMask').style.position = 'none';
+};
+
+newBtn.addEventListener('click', () => {
+    if (x == 0) {
+        displayPopup();
+        pageMask();
+        x++;
+    } else if (x == 1) {
+        removePopup();
+        removePageMask();
+        x--;
     }
 });
+

@@ -7,12 +7,22 @@
     font-family: 'Courier New', Courier, monospace;
     list-style: none;
     text-decoration: none;
+
 }
 
 body {
     height: 100vh;
     width: 100vw;
 }
+
+.pageMask {
+    position: none;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0,0,0,0.6);
+  }
 
 button {
     background: none;
@@ -141,8 +151,8 @@ button {
     position:absolute;
     left: 50%;
     transform: translate(-50%, 0);
-    height: 40vh;
-    width: 25vw;
+    height: 350px;
+    width: 250px;
     display: none;
     justify-content: center;
     align-items: center;
@@ -156,4 +166,8 @@ button {
     height: 90%;
     justify-content: space-between;
     align-items: center;
+}
+
+.formContent label {
+    text-align: center;
 }
