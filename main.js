@@ -5,18 +5,14 @@ let x = 0;
 
 const newBtn = document.getElementById('newBtn');
 const readBtn = document.getElementById('readBtn');
+const closeBtn = document.getElementById('closePopup');
 
 // Library objects and functions
 
 let myLibrary = [];
 
 class Book {
-    constructor(
-        title = 'unknown',
-        author = 'unknown',
-        pages = '0',
-        isRead = false
-    ) {
+    constructor(title, author, pages, isRead) {
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -47,14 +43,13 @@ function removePageMask() {
 };
 
 newBtn.addEventListener('click', () => {
-    if (x == 0) {
         displayPopup();
         pageMask();
         x++;
-    } else if (x == 1) {
-        removePopup();
-        removePageMask();
-        x--;
-    }
 });
 
+closeBtn.addEventListener('click', () => {
+    removePopup();
+    removePageMask();
+    x--;
+})
