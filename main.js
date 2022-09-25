@@ -102,12 +102,27 @@ function darkTheme() {
     document.getElementById('header').style.backgroundColor = 'rgb(var(--spaceCadet))';
     document.getElementById('footer').style.backgroundColor = 'rgb(var(--spaceCadet))';
     document.getElementById('main').style.backgroundColor = 'rgb(var(--blackCoral))';
-    // document.getElementById('tileBorder').style.borderColor = 'rgb(var(--silver))';
     document.getElementById('border').style.borderColor = 'rgb(var(--silver))';
     document.getElementById('popupForm').style.backgroundColor = 'rgb(var(--spaceCadet))';
     root.style.color = 'rgb(var(--white))';
+};
+
+function tileBtnBorderDark() {
+    let borders = document.getElementsByClassName('tileBorder');
+    for (i = 0; i < borders.length; i++) {
+        borders[i].style.borderColor = 'rgb(var(--silver))';
+    }
+};
+
+function tileBackgroundColor() {
+    let tiles = document.getElementsByClassName('tile');
+    for (i = 0; i < tiles.length; i++) {
+        tiles[i].style.backgroundColor = 'rgb(var(--silver))';
+    }
 }
 
 darkBtn.addEventListener('click', () => {
     darkTheme();
+    tileBtnBorderDark();
+    tileBackgroundColor();
 })

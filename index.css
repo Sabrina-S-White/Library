@@ -170,7 +170,7 @@ body {
     width: 95%;
     height: 95%;
     border: 1px solid;
-    border-color: rgb(var(--darkGrey));
+    border-color: rgb(var(--text));
     display: flex;
     justify-content: center;
     align-items: center;
