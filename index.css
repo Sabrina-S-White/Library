@@ -17,7 +17,12 @@
     --silver: 191, 192, 192;
     --white: 255, 255, 255;
     --mandarin: 239, 131, 84;
+
+    /* Font color */
+    color: rgb(var(--text));
 }
+
+/*  */
 
 * {
     margin: 0;
@@ -26,7 +31,6 @@
     font-family: 'Courier New', Courier, monospace;
     list-style: none;
     text-decoration: none;
-    color: rgb(var(--text));
 }
 
 body {
@@ -46,7 +50,8 @@ body {
 .button {
     background: none;
 	color: inherit;
-	border: 1px dashed rgb(var(--text));
+	border: 1px dashed;
+    border-color: (var(--text));
 	padding: 5px;
 	font: inherit;
 	cursor: pointer;
@@ -57,7 +62,8 @@ body {
 .border {
     width: 95%;
     height: 95%;
-    border: 1px solid rgb(var(--text));
+    border: 1px solid; 
+    border-color: rgb(var(--text));
     display: flex;
     justify-content: center;
     align-items: center;

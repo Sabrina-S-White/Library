@@ -96,8 +96,18 @@ unreadBtn.addEventListener('click', () => {
 
 // Theme functionality
 
-themeBtn.addEventListener('click', () => {
-    let options = document.getElementById('themeOptions');
-    options.classList.toggle('show');
+function darkTheme() {
+    let root = document.documentElement;
 
+    document.getElementById('header').style.backgroundColor = 'rgb(var(--spaceCadet))';
+    document.getElementById('footer').style.backgroundColor = 'rgb(var(--spaceCadet))';
+    document.getElementById('main').style.backgroundColor = 'rgb(var(--blackCoral))';
+    // document.getElementById('tileBorder').style.borderColor = 'rgb(var(--silver))';
+    document.getElementById('border').style.borderColor = 'rgb(var(--silver))';
+    document.getElementById('popupForm').style.backgroundColor = 'rgb(var(--spaceCadet))';
+    root.style.color = 'rgb(var(--white))';
+}
+
+darkBtn.addEventListener('click', () => {
+    darkTheme();
 })
