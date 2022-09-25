@@ -5,6 +5,7 @@ let x = 0;
 
 const newBtn = document.getElementById('newBtn');
 const readBtn = document.getElementById('readBtn');
+const unreadBtn = document.getElementById('unreadBtn');
 const closeBtn = document.getElementById('closePopup');
 
 // Library objects and functions
@@ -56,10 +57,37 @@ closeBtn.addEventListener('click', () => {
 
 // Mark as read effect
 
-function markReadBorder() {
-    document.getElementById('tileBorder').style.borderColor = 'rgb(var(--yellow)';
+function removeReadBtn() {
+    document.getElementById('readBtn').style.display = 'none';
+    document.getElementById('unreadBtn').style.display = 'block';
+    
+};
+
+function removeUnreadBtn() {
+    document.getElementById('unreadBtn').style.display = 'none';
+    document.getElementById('readBtn').style.display = 'block';
+};
+
+function readBackgroundColor() {
+    let tiles = document.getElementsByClassName('tile');
+    for (i = 0; i < tiles.length; i++) {
+        tiles[i].style.backgroundColor = 'rgb(var(--read))';
+    }
+};
+
+function unreadBackgroundColor() {
+    let tiles = document.getElementsByClassName('tile');
+    for (i = 0; i < tiles.length; i++) {
+        tiles[i].style.backgroundColor = 'rgb(var(--queenPink)'
+    }
 }
 
 readBtn.addEventListener('click', () => {
-    markReadBorder();
+    removeReadBtn();
+    readBackgroundColor();
+});
+
+unreadBtn.addEventListener('click', () => {
+    removeUnreadBtn();
+    unreadBackgroundColor();
 })
