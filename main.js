@@ -53,3 +53,13 @@ closeBtn.addEventListener('click', () => {
     removePageMask();
     x--;
 })
+
+// Mark as read effect
+
+function markReadBorder() {
+    document.getElementById('tileBorder').style.borderColor = 'rgb(var(--yellow)';
+}
+
+readBtn.addEventListener('click', () => {
+    markReadBorder();
+})

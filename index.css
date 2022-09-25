@@ -1,5 +1,13 @@
 /* Setting default styling  */
 
+:root {
+    --blue: 38, 70, 83;
+    --teal: 42, 157, 143;
+    --yellow: 233, 196, 106;
+    --orange: 244, 162, 97;
+    --brick: 231, 111, 81;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -24,21 +32,30 @@ body {
     background-color: rgba(0,0,0,0.6);
   }
 
-button {
+.button {
     background: none;
 	color: inherit;
-	border: 1px dashed darkslategrey;
+	border: 1px dashed rgb(var(--brick));
 	padding: 5px;
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
 }
 
+.border {
+    width: 95%;
+    height: 95%;
+    border: 1px solid rgb(var(--brick));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Header styling */
 
 .header {
     height: 30%;
-    background-color: antiquewhite;
+    background-color: rgb(var(--teal));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -70,7 +87,7 @@ button {
 
 .main {
     height: 60%;
-    background-color: floralwhite;
+    background-color: rgb(var(--orange));
     display: flex;
     justify-content: center;
     align-items: center;
@@ -80,7 +97,8 @@ button {
 
 .footer {
     height: 10%;
-    background-color: antiquewhite;
+    background-color: rgb(var(--teal));
+    box-shadow: 10px 10px 10px black;
 }
 
 .contactList {
@@ -96,24 +114,6 @@ button {
 .tileHouse {
     height: 90%;
     width: 90%;
-}
-
-.tile {
-    background-color: antiquewhite;
-    width: 200px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.border {
-    width: 95%;
-    height: 95%;
-    border: 1px solid darkslategrey;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 .tileContents {
@@ -134,7 +134,7 @@ button {
     justify-content: space-evenly;
 }
 
-.tileButton {
+.tileButtonDiv {
     height: 10%;
 }
 
@@ -147,7 +147,7 @@ button {
 /* Popup window to add new books */
 
 .popupForm {
-    background-color: antiquewhite;
+    background-color: rgb(var(--yellow));
     position:absolute;
     left: 50%;
     transform: translate(-50%, 0);
@@ -170,4 +170,35 @@ button {
 
 .formContent label {
     text-align: center;
+}
+
+/* Mark as read styles */
+
+.tileBorder {
+    width: 95%;
+    height: 95%;
+    border: 1px solid;
+    border-color: rgb(var(--brick));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tileButton {
+    background: none;
+	color: inherit;
+	border: 1px dashed rgb(var(--brick));
+	padding: 5px;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;   
+}
+
+.tile {
+    background-color: rgb(var(--yellow));
+    width: 200px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
