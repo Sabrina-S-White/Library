@@ -7,6 +7,8 @@ const newBtn = document.getElementById('newBtn');
 const readBtn = document.getElementById('readBtn');
 const unreadBtn = document.getElementById('unreadBtn');
 const closeBtn = document.getElementById('closePopup');
+const lightBtn = document.getElementById('lightTheme');
+const darkBtn = document.getElementById('darkTheme');
 
 // Library objects and functions
 
@@ -90,4 +92,12 @@ readBtn.addEventListener('click', () => {
 unreadBtn.addEventListener('click', () => {
     removeUnreadBtn();
     unreadBackgroundColor();
+})
+
+// Theme functionality
+
+themeBtn.addEventListener('click', () => {
+    let options = document.getElementById('themeOptions');
+    options.classList.toggle('show');
+
 })
