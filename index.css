@@ -154,7 +154,7 @@ body {
 /* Mark as read styles */
 
 .tile {
-    background-color: rgb(var(--queenPink));
+    background-color: rgb(var(--blackCoral));
     width: 200px;
     height: 250px;
     display: flex;
@@ -187,11 +187,11 @@ body {
 }
 
 .tileButtonRead {
-    background-color: green;
+    background-color: red;
 }
 
 .tileButtonUnread {
-    background-color: red;
+    background-color: green;
 }
 
 #readBtn {
