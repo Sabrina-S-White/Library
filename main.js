@@ -3,16 +3,18 @@ let x = 0;
 
 // Button functionality 
 
+const newBookBtn = document.getElementById('newBookBtn');
 const newBtn = document.getElementById('newBtn');
 const readBtn = document.getElementById('readBtn');
 const unreadBtn = document.getElementById('unreadBtn');
 const closeBtn = document.getElementById('closePopup');
 const lightBtn = document.getElementById('lightTheme');
 const darkBtn = document.getElementById('darkTheme');
+const newBookForm = document.getElementById('newBookForm');
 
 // Library objects and functions
 
-let myLibrary = [];
+let myLibrary = new Array;
 
 class Book {
     constructor(title, author, pages, isRead) {
@@ -20,42 +22,63 @@ class Book {
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
-}}
-
-
-function addBookToLibrary() {
-
+}
 }
 
-// New Book Popup
+function newBook() {
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const isRead = document.getElementById('read').checked;
+    let newEntry = new Book(title, author, pages, isRead);
+    myLibrary.push(newEntry);
+}
 
-function displayPopup() {
-    document.getElementById('popupForm').style.display = 'flex';
-};
+function clearForm() {
+    document.getElementById('title').innerHTML = '';
+    document.getElementById('author').innerHTML = '';
+    document.getElementById('pages').innerHTML = '';
+    document.getElementById('read').setAttribute = 'checked'
+}
 
-function removePopup() {
-    document.getElementById('popupForm').style.display = 'none';
-};
-
-function pageMask() {
-    document.getElementById('pageMask').style.position = 'fixed';
-};
-
-function removePageMask() {
-    document.getElementById('pageMask').style.position = 'none';
-};
-
-newBtn.addEventListener('click', () => {
-        displayPopup();
-        pageMask();
-        x++;
-});
-
-closeBtn.addEventListener('click', () => {
-    removePopup();
-    removePageMask();
-    x--;
+newBookBtn.addEventListener('click', () => {
+    console.log('clicked')
+    newBook();
+    for (i = 0; i < myLibrary.length; i++) {
+        console.log(myLibrary[i]);
+    }
+    newBookForm.reset();
+    // createTile();
 })
+
+// function createTile(book) {
+//     const tile = document.createElement('div');
+//     const border = document.createElement('div');
+//     const title = document.createElement('p');
+//     const author = document.createElement('p');
+//     const pages = document.createElement('p');
+//     const buttonGroup = document.createElement('div');
+//     const markRead = document.createElement('button');
+//     const removeBook = document.createElement('button');
+
+//     tile.classList.add('tile');
+//     border.classList.add('tileBorder');
+//     markRead.classList.add('tileButton');
+//     removeBook.classList.add('tileButton');
+
+//     title.textContent = `${book.title}`;
+//     author.textContent = book.author;
+//     pages.textContent = `${book.pages}`;
+//     removeBook.textContent = 'Remove Book';
+
+//     tile.appendChild(title);
+//     tile.appendChild(author);
+//     tile.appendChild(pages);
+//     buttonGroup.appendChild(markRead);
+//     buttonGroup.appendChild(removeBook);
+//     tile.appendChild(buttonGroup);
+//     tileHouse.appendChild(tile);
+// }
 
 // Mark as read effect
 
@@ -84,15 +107,15 @@ function unreadBackgroundColor() {
     }
 }
 
-readBtn.addEventListener('click', () => {
-    removeReadBtn();
-    readBackgroundColor();
-});
+// readBtn.addEventListener('click', () => {
+//     removeReadBtn();
+//     readBackgroundColor();
+// });
 
-unreadBtn.addEventListener('click', () => {
-    removeUnreadBtn();
-    unreadBackgroundColor();
-})
+// unreadBtn.addEventListener('click', () => {
+//     removeUnreadBtn();
+//     unreadBackgroundColor();
+// })
 
 // Theme functionality
 
