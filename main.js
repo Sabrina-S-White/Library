@@ -23,8 +23,21 @@ class Book {
     this.author = author;
     this.pages = pages;
     this.isRead = isRead;
+    }
 }
-}
+
+Book.prototype.toggleRead = function() {
+    for (i = 0; i < myLibrary.length; i++) {
+        if (myLibrary[i].isRead) {
+            markRead.textContent = 'Mark as Unread';
+            markRead.classList.remove('tileButtonRead');
+            markRead.classList.add('tileButtonRead')
+        } else if (myLibrary[i].isRead == false) {
+            markRead.textContent = 'Mark as Read';
+            markRead.classList.remove('tileButtonRead');
+            markRead.classList.add('tileButtonUnread');
+        }
+}}
 
 function newBook() {
     const title = document.getElementById('title').value;
@@ -44,9 +57,6 @@ function clearForm() {
 
 newBookBtn.addEventListener('click', () => {
     newBook();
-    for (i = 0; i < myLibrary.length; i++) {
-        console.log(myLibrary[i]);
-    }
     newBookForm.reset();
     clearTileHouse();
     addTile();
@@ -64,61 +74,49 @@ function addTile() {
         const title = document.createElement('p');
         const author = document.createElement('p');
         const pages = document.createElement('p')
+        const buttons = document.createElement('div');
+        const markRead = document.createElement('button');
+        const removeBook = document.createElement('button');
 
         tile.classList.add('tile');
         border.classList.add('tileBorder');
         tileContent.classList.add('tileContents');
+        buttons.classList.add('tileButtonDiv');
+        markRead.classList.add('tileButton');
+        markRead.classList.add('tileButtonRead');
+        markRead.classList.add('tileBtnList');
+        removeBook.classList.add('tileButton');
     
         title.textContent = myLibrary[i].title;
         author.textContent = 'Author: ' + myLibrary[i].author;
         pages.textContent = 'Page Count: ' + myLibrary[i].pages;
+        removeBook.textContent = 'Remove Book'
+
+        if (myLibrary[i].isRead == true) {
+            markRead.textContent = 'Mark as Unread';
+            markRead.classList.remove('tileButtonRead')
+            markRead.classList.add('tileButtonUnread')
+        } else if (myLibrary[i].isRead != true) {
+            markRead.textContent = 'Mark as Read';
+            markRead.classList.remove('tileButtonUnread')
+            markRead.classList.add('tileButtonRead');
+        }
 
         tile.appendChild(border);
         border.appendChild(tileContent);
         tileContent.appendChild(title);
         tileContent.appendChild(author);
         tileContent.appendChild(pages);
+        tileContent.appendChild(buttons);
+        buttons.appendChild(markRead);
+        buttons.appendChild(removeBook);
         tileHouse.appendChild(tile);
-
     }
 }
+
 
 // Mark as read effect
 
-function removeReadBtn() {
-    document.getElementById('readBtn').style.display = 'none';
-    document.getElementById('unreadBtn').style.display = 'block';
-    
-};
-
-function removeUnreadBtn() {
-    document.getElementById('unreadBtn').style.display = 'none';
-    document.getElementById('readBtn').style.display = 'block';
-};
-
-function readBackgroundColor() {
-    let tiles = document.getElementsByClassName('tile');
-    for (i = 0; i < tiles.length; i++) {
-        tiles[i].style.backgroundColor = 'rgb(var(--read))';
-    }
-};
-
-function unreadBackgroundColor() {
-    let tiles = document.getElementsByClassName('tile');
-    for (i = 0; i < tiles.length; i++) {
-        tiles[i].style.backgroundColor = 'rgb(var(--queenPink)'
-    }
-}
-
-// readBtn.addEventListener('click', () => {
-//     removeReadBtn();
-//     readBackgroundColor();
-// });
-
-// unreadBtn.addEventListener('click', () => {
-//     removeUnreadBtn();
-//     unreadBackgroundColor();
-// })
 
 // Theme functionality
 
@@ -151,4 +149,4 @@ darkBtn.addEventListener('click', () => {
     darkTheme();
     tileBtnBorderDark();
     tileBackgroundColor();
-})
+});

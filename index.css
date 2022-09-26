@@ -186,6 +186,14 @@ body {
     font-weight: bold;
 }
 
+.tileButtonRead {
+    background-color: green;
+}
+
+.tileButtonUnread {
+    background-color: red;
+}
+
 #readBtn {
     display: block;
 }
@@ -208,7 +216,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 15px;
     padding-bottom: 20px;
 }
@@ -221,7 +229,12 @@ body {
 }
 
 .tileButtonDiv {
-    height: 10%;
+    height: 30%;
+    width: 100%;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
 }
 
 .title {
