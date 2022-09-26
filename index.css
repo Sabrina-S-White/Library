@@ -132,6 +132,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: scroll;
 }
 
 /* Footer styling */
@@ -157,8 +158,10 @@ body {
     width: 200px;
     height: 250px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 5px;
 }
 
 .tileBorder {
@@ -194,6 +197,9 @@ body {
 .tileHouse {
     height: 90%;
     width: 90%;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .tileContents {

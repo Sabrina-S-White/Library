@@ -11,6 +11,7 @@ const closeBtn = document.getElementById('closePopup');
 const lightBtn = document.getElementById('lightTheme');
 const darkBtn = document.getElementById('darkTheme');
 const newBookForm = document.getElementById('newBookForm');
+const tileHouse = document.getElementById('tileHouse')
 
 // Library objects and functions
 
@@ -42,43 +43,45 @@ function clearForm() {
 }
 
 newBookBtn.addEventListener('click', () => {
-    console.log('clicked')
     newBook();
     for (i = 0; i < myLibrary.length; i++) {
         console.log(myLibrary[i]);
     }
     newBookForm.reset();
-    // createTile();
+    clearTileHouse();
+    addTile();
 })
 
-// function createTile(book) {
-//     const tile = document.createElement('div');
-//     const border = document.createElement('div');
-//     const title = document.createElement('p');
-//     const author = document.createElement('p');
-//     const pages = document.createElement('p');
-//     const buttonGroup = document.createElement('div');
-//     const markRead = document.createElement('button');
-//     const removeBook = document.createElement('button');
+function clearTileHouse() {
+    tileHouse.innerHTML = '';
+}
 
-//     tile.classList.add('tile');
-//     border.classList.add('tileBorder');
-//     markRead.classList.add('tileButton');
-//     removeBook.classList.add('tileButton');
+function addTile() {
+    for (i = 0; i < myLibrary.length; i++) {
+        const tile = document.createElement('div');
+        const border = document.createElement('div');
+        const tileContent = document.createElement('div');
+        const title = document.createElement('p');
+        const author = document.createElement('p');
+        const pages = document.createElement('p')
 
-//     title.textContent = `${book.title}`;
-//     author.textContent = book.author;
-//     pages.textContent = `${book.pages}`;
-//     removeBook.textContent = 'Remove Book';
+        tile.classList.add('tile');
+        border.classList.add('tileBorder');
+        tileContent.classList.add('tileContents');
+    
+        title.textContent = myLibrary[i].title;
+        author.textContent = 'Author: ' + myLibrary[i].author;
+        pages.textContent = 'Page Count: ' + myLibrary[i].pages;
 
-//     tile.appendChild(title);
-//     tile.appendChild(author);
-//     tile.appendChild(pages);
-//     buttonGroup.appendChild(markRead);
-//     buttonGroup.appendChild(removeBook);
-//     tile.appendChild(buttonGroup);
-//     tileHouse.appendChild(tile);
-// }
+        tile.appendChild(border);
+        border.appendChild(tileContent);
+        tileContent.appendChild(title);
+        tileContent.appendChild(author);
+        tileContent.appendChild(pages);
+        tileHouse.appendChild(tile);
+
+    }
+}
 
 // Mark as read effect
 
