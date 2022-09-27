@@ -24,22 +24,22 @@ class Book {
     this.pages = pages;
     this.isRead = isRead;
     }
-}
+    toggleRead() {
+        for (i = 0; i < myLibrary.length; i++) {
+            if (myLibrary[i].isRead) {
+                markRead.textContent = 'Mark as Unread';
+                markRead.classList.remove('tileButtonRead');
+                markRead.classList.add('tileButtonRead')
+            } else if (myLibrary[i].isRead == false) {
+                markRead.textContent = 'Mark as Read';
+                markRead.classList.remove('tileButtonRead');
+                markRead.classList.add('tileButtonUnread');
+            }
+    }
+    }
+};
 
-Book.prototype.toggleRead = function() {
-    for (i = 0; i < myLibrary.length; i++) {
-        if (myLibrary[i].isRead) {
-            markRead.textContent = 'Mark as Unread';
-            markRead.classList.remove('tileButtonRead');
-            markRead.classList.add('tileButtonRead')
-        } else if (myLibrary[i].isRead == false) {
-            markRead.textContent = 'Mark as Read';
-            markRead.classList.remove('tileButtonRead');
-            markRead.classList.add('tileButtonUnread');
-        }
-}}
-
-function newBook() {
+newBook = function() {
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
@@ -48,25 +48,18 @@ function newBook() {
     myLibrary.push(newEntry);
 }
 
-function clearForm() {
+clearForm = function() {
     document.getElementById('title').innerHTML = '';
     document.getElementById('author').innerHTML = '';
     document.getElementById('pages').innerHTML = '';
     document.getElementById('read').setAttribute = 'checked'
 }
 
-newBookBtn.addEventListener('click', () => {
-    newBook();
-    newBookForm.reset();
-    clearTileHouse();
-    addTile();
-})
-
-function clearTileHouse() {
+clearTileHouse = function() {
     tileHouse.innerHTML = '';
 }
 
-function addTile() {
+addTile = function() {
     for (i = 0; i < myLibrary.length; i++) {
         const tile = document.createElement('div');
         const border = document.createElement('div');
@@ -111,12 +104,28 @@ function addTile() {
         buttons.appendChild(markRead);
         buttons.appendChild(removeBook);
         tileHouse.appendChild(tile);
-    }
-}
 
+        markRead.addEventListener('click', () => {
+            console.log('ok');
+            if (markRead.textContent == 'Mark as Unread') {
+                markRead.textContent = 'Mark as Read';
+                markRead.classList.remove('tileButtonUnread')
+                markRead.classList.add('tileButtonRead');
+            } else if (markRead.textContent == 'Mark as Read') {
+                markRead.textContent = 'Mark as Unread';
+                markRead.classList.remove('tileButtonRead')
+                markRead.classList.add('tileButtonUnread')
+            }
+        }
+)}};
 
-// Mark as read effect
-
+const bookCreate = new Book(
+    newBookBtn.addEventListener('click', () => {
+        this.newBook();
+        newBookForm.reset();
+        clearTileHouse();
+        addTile();
+}));
 
 // Theme functionality
 

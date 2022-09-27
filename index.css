@@ -154,7 +154,7 @@ body {
 /* Mark as read styles */
 
 .tile {
-    background-color: rgb(var(--blackCoral));
+    background-color:lightsteelblue;
     width: 200px;
     height: 250px;
     display: flex;
