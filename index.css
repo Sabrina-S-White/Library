@@ -100,7 +100,7 @@ body {
 
 .formContent {
     display: flex;
-    width: 90%;
+    width: clamp(20% 50% 90%);
     height: 90%;
     justify-content: space-between;
     align-items: center;
@@ -176,7 +176,8 @@ body {
 
 .tileButton {
     background: none;
-	color: black;
+    background-color: rgb(var(--spaceCadet));
+	color: rgb(var(--white));
 	border: 1px dashed; 
     border-color: rgb(var(--text));
 	padding: 5px;
@@ -187,11 +188,11 @@ body {
 }
 
 .tileButtonRead {
-    background-color: red;
+    background-color: rgb(116, 33, 33);
 }
 
 .tileButtonUnread {
-    background-color: green;
+    background-color: rgb(45, 95, 45);
 }
 
 #readBtn {

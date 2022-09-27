@@ -1,6 +1,3 @@
-// Variables
-let x = 0;
-
 // Button functionality 
 
 const newBookBtn = document.getElementById('newBookBtn');
@@ -46,6 +43,7 @@ newBook = function() {
     const isRead = document.getElementById('read').checked;
     let newEntry = new Book(title, author, pages, isRead);
     myLibrary.push(newEntry);
+    setData();
 }
 
 clearForm = function() {
@@ -59,7 +57,7 @@ clearTileHouse = function() {
     tileHouse.innerHTML = '';
 }
 
-addTile = function() {
+addTile = function(item) {
     for (i = 0; i < myLibrary.length; i++) {
         const tile = document.createElement('div');
         const border = document.createElement('div');
@@ -95,6 +93,11 @@ addTile = function() {
             markRead.classList.add('tileButtonRead');
         }
 
+        removeBook.addEventListener('click', () => {
+            myLibrary.splice(myLibrary.indexOf(item), 1);
+            setData();
+        })
+
         tile.appendChild(border);
         border.appendChild(tileContent);
         tileContent.appendChild(title);
@@ -106,18 +109,19 @@ addTile = function() {
         tileHouse.appendChild(tile);
 
         markRead.addEventListener('click', () => {
-            console.log('ok');
             if (markRead.textContent == 'Mark as Unread') {
                 markRead.textContent = 'Mark as Read';
                 markRead.classList.remove('tileButtonUnread')
                 markRead.classList.add('tileButtonRead');
+                setData();
             } else if (markRead.textContent == 'Mark as Read') {
                 markRead.textContent = 'Mark as Unread';
                 markRead.classList.remove('tileButtonRead')
                 markRead.classList.add('tileButtonUnread')
+                setData();
             }
-        }
-)}};
+        });
+}};
 
 const bookCreate = new Book(
     newBookBtn.addEventListener('click', () => {
@@ -135,22 +139,21 @@ function darkTheme() {
     document.getElementById('header').style.backgroundColor = 'rgb(var(--spaceCadet))';
     document.getElementById('footer').style.backgroundColor = 'rgb(var(--spaceCadet))';
     document.getElementById('main').style.backgroundColor = 'rgb(var(--blackCoral))';
-    document.getElementById('border').style.borderColor = 'rgb(var(--silver))';
-    document.getElementById('popupForm').style.backgroundColor = 'rgb(var(--spaceCadet))';
     root.style.color = 'rgb(var(--white))';
+    
 };
 
 function tileBtnBorderDark() {
     let borders = document.getElementsByClassName('tileBorder');
     for (i = 0; i < borders.length; i++) {
-        borders[i].style.borderColor = 'rgb(var(--silver))';
+        borders[i].style.borderColor = 'rgb(var(--white))';
     }
 };
 
 function tileBackgroundColor() {
     let tiles = document.getElementsByClassName('tile');
     for (i = 0; i < tiles.length; i++) {
-        tiles[i].style.backgroundColor = 'rgb(var(--silver))';
+        tiles[i].style.backgroundColor = 'rgb(var(--darkGrey))';
     }
 }
 
@@ -159,3 +162,37 @@ darkBtn.addEventListener('click', () => {
     tileBtnBorderDark();
     tileBackgroundColor();
 });
+
+function lightTheme() {
+    let root = document.documentElement;
+
+    document.getElementById('header').style.backgroundColor = 'rgb(var(--paleCerulean))';
+    document.getElementById('footer').style.backgroundColor = 'rgb(var(--paleCerulean))';
+    document.getElementById('main').style.backgroundColor = 'rgb(var(--aliceBlue))';
+    root.style.color = 'rgb(var(--text))';
+}
+
+function tileBtnBorderLight() {
+    let borders = document.getElementsByClassName('tileBorder');
+    for (i = 0; i < borders.length; i++) {
+        borders[i].style.borderColor = 'rgb(var(--text))';
+    }
+};
+
+function tileBackgroundColorLight() {
+    let tiles = document.getElementsByClassName('tile');
+    for (i = 0; i < tiles.length; i++) {
+        tiles[i].style.backgroundColor = 'lightsteelblue';
+    }
+}
+
+lightBtn.addEventListener('click', () => {
+    lightTheme();
+    tileBtnBorderLight();
+    tileBackgroundColorLight();
+})
+
+// setting Library to be stored in local storage
+function setData() {
+    localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
+}
