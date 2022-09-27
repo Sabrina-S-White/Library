@@ -104,10 +104,22 @@ body {
     height: 90%;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    gap: 10px;
 }
 
-.formContent label {
-    text-align: center;
+.formStart {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: start;
+}
+
+.formMid {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: start;
 }
 
 .headerRight {

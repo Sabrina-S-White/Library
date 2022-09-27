@@ -96,6 +96,7 @@ addTile = function(item) {
         removeBook.addEventListener('click', () => {
             myLibrary.splice(myLibrary.indexOf(item), 1);
             setData();
+            
         })
 
         tile.appendChild(border);
