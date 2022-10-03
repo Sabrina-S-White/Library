@@ -1,5 +1,4 @@
 // Button functionality 
-
 const newBookBtn = document.getElementById('newBookBtn');
 const newBtn = document.getElementById('newBtn');
 const readBtn = document.getElementById('readBtn');
@@ -21,16 +20,13 @@ class Book {
     this.pages = pages;
     this.isRead = isRead;
     }
+
     toggleRead() {
         for (i = 0; i < myLibrary.length; i++) {
             if (myLibrary[i].isRead) {
-                markRead.textContent = 'Mark as Unread';
-                markRead.classList.remove('tileButtonRead');
-                markRead.classList.add('tileButtonRead')
+                this.isRead = false;
             } else if (myLibrary[i].isRead == false) {
-                markRead.textContent = 'Mark as Read';
-                markRead.classList.remove('tileButtonRead');
-                markRead.classList.add('tileButtonUnread');
+                this.isRead = true;
             }
     }
     }
@@ -96,7 +92,6 @@ addTile = function(item) {
         removeBook.addEventListener('click', () => {
             myLibrary.splice(myLibrary.indexOf(item), 1);
             setData();
-            
         })
 
         tile.appendChild(border);
