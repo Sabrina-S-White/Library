@@ -14,7 +14,8 @@ const tileHouse = document.getElementById('tileHouse')
 let myLibrary = new Array;
 
 class Book {
-    constructor(title, author, pages, isRead) {
+    constructor(id, title, author, pages, isRead) {
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -32,14 +33,26 @@ class Book {
     }
 };
 
+const Bookmanager = (() => {
+    const tileBtns = document.querySelectorAll('.tileButton')
+    const removeBook = () => {
+        for (const btn of tileBtns) {
+            btn.addEventListener('click', () => {
+                console.log('ok');
+        })}} 
+    return { removeBook };
+})();
+
+
 newBook = function() {
+    const id = myLibrary.length + 1
+    ;
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     const isRead = document.getElementById('read').checked;
-    let newEntry = new Book(title, author, pages, isRead);
+    let newEntry = new Book(id, title, author, pages, isRead);
     myLibrary.push(newEntry);
-    setData();
 }
 
 clearForm = function() {
@@ -191,4 +204,6 @@ lightBtn.addEventListener('click', () => {
 // setting Library to be stored in local storage
 function setData() {
     localStorage.setItem(`myLibrary`, JSON.stringify(myLibrary));
-}
+};
+
+Bookmanager.removeBook();
