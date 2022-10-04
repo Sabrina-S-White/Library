@@ -9,14 +9,15 @@ const darkBtn = document.getElementById('darkTheme');
 const newBookForm = document.getElementById('newBookForm');
 const tileHouse = document.getElementById('tileHouse')
 
-const removeBtns = document.querySelectorAll('.removeBtns')
+
 
 // Library objects and functions
 
 let myLibrary = new Array;
 
 class Book {
-    constructor(title, author, pages, isRead) {
+    constructor(id, title, author, pages, isRead) {
+        this.id = id,
         this.title = title,
         this.author = author,
         this.pages = pages,
@@ -78,20 +79,6 @@ class Book {
         tileHouse.appendChild(tile);
     }
 
-    removeBook() {
-        print('ok')
-        this.splice(myLibrary.indexOf(item), 1);
-        this.tile.remove();
-        this.border.remove();
-        this.tileContent.remove();
-        this.title.remove();
-        this.author.remove();
-        this.pages.remove();
-        this.buttons.remove();
-        this.markRead.remove();
-        this.removeBook.remove();
-    }
-
     markRead() {
         markRead.addEventListener('click', () => {
             if (markRead.textContent == 'Mark as Unread') {
@@ -108,12 +95,36 @@ class Book {
 
 }
 
+const maintainLibrary = (() => {
+    let removeBtns = [];
+    
+    const checkForBtns = () => {
+        removeBtns = document.querySelectorAll('.removeBtns')
+    }
+    const remove = () => {
+        console.log(myLibrary[this.id])
+        myLibrary.splice(myLibrary[this.id], 1);
+        // this.tile.remove();
+        // this.border.remove();
+        // this.tileContent.remove();
+        // this.title.remove();
+        // this.author.remove();
+        // this.pages.remove();
+        // this.buttons.remove();
+        // this.markRead.remove();
+        // this.removeBook.remove();
+    }
+
+    return { remove, removeBtns, checkForBtns };
+})();
+
 newBook = function() {
+    const id = myLibrary.length;
     const title = document.getElementById('title').value;
     const author = document.getElementById('author').value;
     const pages = document.getElementById('pages').value;
     const isRead = document.getElementById('read').checked;
-    let newEntry = new Book(title, author, pages, isRead);
+    let newEntry = new Book(id, title, author, pages, isRead);
     myLibrary.push(newEntry);
 }
 
@@ -122,15 +133,12 @@ const bookCreate = new Book(
         let i = myLibrary.length;
         this.newBook();
         myLibrary[i].createTile();
+        maintainLibrary.removeBtns
+        maintainLibrary.checkForBtns();
 }));
 
-for (const btn of removeBtns) {
+for (const btn of maintainLibrary.removeBtns) {
     btn.addEventListener('click', () => {
         console.log('ok');
     })
 }
-
-removeBtns.forEach(function(currentBtn){
-    currentBtn.addEventListener('click', () => {
-        console.log('ok')
-    })});
